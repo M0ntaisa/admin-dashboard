@@ -1,5 +1,10 @@
 node_modules
 cypress
 public
-src
+src/*
+
+!src/components
+
+src/components/*
+
 !src/components/Nav
