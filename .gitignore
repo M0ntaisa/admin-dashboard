@@ -4,7 +4,10 @@ public
 src/*
 
 !src/components
+!src/views
 
 src/components/*
+src/views/*
 
 !src/components/Nav
+!src/views/NotFountView.vue
