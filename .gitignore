@@ -9,6 +9,12 @@ src/*
 src/components/*
 src/views/*
 
+!src/views/Akademik
+
 !src/components/Nav
 !src/views/NotFountView.vue
 !src/views/ServerErrorView.vue
+
+src/views/Akademik/*
+
+!src/views/Akademik/KalenderAkademik.vue
