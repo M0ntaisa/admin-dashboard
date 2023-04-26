@@ -81,7 +81,7 @@ const navs = [
         child: [
           {
             name: "Identitas Institusi",
-            path: "/master/id-institusi",
+            path: "/master/identitas-institusi",
           },
           {
             name: "Program Studi",

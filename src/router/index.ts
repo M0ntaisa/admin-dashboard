@@ -2,6 +2,9 @@ import { createRouter, createWebHistory } from "vue-router";
 import LayoutView from "@/views/LayoutView.vue";
 import HomeView from "@/views/HomeView.vue";
 import KalenderAkademik from "@/views/Akademik/KalenderAkademik.vue";
+import IdentitasInstitute from "@/views/Master/IdentitasInstitute.vue";
+import Administrator from "@/views/Admin/Administrator.vue";
+
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -22,7 +25,14 @@ const router = createRouter({
           path: "akademik/kalender-akademik",
           component: KalenderAkademik,
         },
-        
+        {
+          path: "Master/identitas-institusi",
+          component: IdentitasInstitute,
+        },
+        {
+          path: "Admin/Administrator",
+          component: Administrator,
+        },
       ],
     },
     {

@@ -11,11 +11,17 @@ src/components/*
 src/views/*
 
 !src/views/Akademik
+!src/views/Master
+!src/views/Admin
 
 !src/components/Nav
 !src/views/NotFountView.vue
 !src/views/ServerErrorView.vue
 
 src/views/Akademik/*
+src/views/Master/*
+src/views/Admin/*
 
 !src/views/Akademik/KalenderAkademik.vue
+!src/views/Master/IdentitasInstitute.vue
+!src/views/Admin/Administrator.vue
