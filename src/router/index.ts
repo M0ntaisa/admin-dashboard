@@ -30,7 +30,11 @@ const router = createRouter({
           component: IdentitasInstitute,
         },
         {
-          path: "Admin/Administrator",
+          path: "Admin/administrator",
+          component: Administrator,
+        },
+        {
+          path: "Admin/akademik",
           component: Administrator,
         },
       ],
