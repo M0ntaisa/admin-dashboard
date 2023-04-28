@@ -5,6 +5,7 @@ import KalenderAkademik from "@/views/Akademik/KalenderAkademik.vue";
 import IdentitasInstitute from "@/views/Master/IdentitasInstitute.vue";
 import Administrator from "@/views/Admin/Administrator.vue";
 import Akademik from "@/views/Admin/Akademik.vue";
+import HakModul from "@/views/Admin/HakModul.vue";
 
 
 const router = createRouter({
@@ -37,6 +38,10 @@ const router = createRouter({
         {
           path: "Admin/akademik",
           component: Akademik,
+        },
+        {
+          path: "Admin/hak-modul",
+          component: HakModul,
         },
       ],
     },
