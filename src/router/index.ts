@@ -4,6 +4,7 @@ import HomeView from "@/views/HomeView.vue";
 import KalenderAkademik from "@/views/Akademik/KalenderAkademik.vue";
 import IdentitasInstitute from "@/views/Master/IdentitasInstitute.vue";
 import Administrator from "@/views/Admin/Administrator.vue";
+import Akademik from "@/views/Admin/Akademik.vue";
 
 
 const router = createRouter({
@@ -35,7 +36,7 @@ const router = createRouter({
         },
         {
           path: "Admin/akademik",
-          component: Administrator,
+          component: Akademik,
         },
       ],
     },
