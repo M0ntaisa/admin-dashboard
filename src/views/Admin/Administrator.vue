@@ -1,112 +1,33 @@
-<script setup lang="ts">
+<script>
 import { ref, watchEffect } from "vue";
 import { PencilIcon, TrashIcon } from "@heroicons/vue/24/outline";
+// import axios
+import axios from 'axios';
 
-interface TableCell {
-  id: number;
-  checked: boolean;
-  name: string;
-  title: string;
-  email: string;
-  role: string;
-  status: number;
-}
+export default {
+  data() {
+    return {
+      items: [],
+    };
+  },
+  created() {
+    this.getIdentitas();
+  },
+  methods: {
+    // get all products
+    async getIdentitas() {
+      try {
+        const response = await axios.get("http://localhost:5000/administrator");
+        this.items = response.data;
+        console.log(this.items);
+      } catch (error) {
+        console.log(error);
+      }
+    },
+  },
+};
 
-const tableData = ref<TableCell[]>([]);
-watchEffect(async () => {
-  tableData.value = [
-    {
-      id: 1,
-      checked: false,
-      name: "Leon",
-      title: "Full Stack",
-      email: "leon@example.com",
-      role: "member",
-      status: 1,
-    },
-    {
-      id: 2,
-      checked: false,
-      name: "Leon",
-      title: "Full Stack",
-      email: "leon@example.com",
-      role: "member",
-      status: 0,
-    },
-    {
-      id: 3,
-      checked: false,
-      name: "Leon",
-      title: "Full Stack",
-      email: "leon@example.com",
-      role: "member",
-      status: 1,
-    },
-    {
-      id: 4,
-      checked: false,
-      name: "Leon",
-      title: "Full Stack",
-      email: "leon@example.com",
-      role: "member",
-      status: 0,
-    },
-    {
-      id: 5,
-      checked: false,
-      name: "Leon",
-      title: "Full Stack",
-      email: "leon@example.com",
-      role: "member",
-      status: 1,
-    },
-    {
-      id: 6,
-      checked: false,
-      name: "Leon",
-      title: "Full Stack",
-      email: "leon@example.com",
-      role: "member",
-      status: 1,
-    },
-    {
-      id: 7,
-      checked: false,
-      name: "Leon",
-      title: "Full Stack",
-      email: "leon@example.com",
-      role: "member",
-      status: 1,
-    },
-    {
-      id: 8,
-      checked: false,
-      name: "Leon",
-      title: "Full Stack",
-      email: "leon@example.com",
-      role: "member",
-      status: 0,
-    },
-    {
-      id: 9,
-      checked: false,
-      name: "Leon",
-      title: "Full Stack",
-      email: "leon@example.com",
-      role: "member",
-      status: 0,
-    },
-    {
-      id: 10,
-      checked: false,
-      name: "Leon",
-      title: "Full Stack",
-      email: "leon@example.com",
-      role: "member",
-      status: 0,
-    },
-  ];
-});
+
 </script>
 
 <template>
@@ -123,7 +44,7 @@ watchEffect(async () => {
           <thead class="bg-slate-50 border-b border-slate-200">
             <tr class="text-slate-900 text-sm text-left">
               <th class="px-4 py-3 font-medium rounded-tl-md">Name</th>
-              <th class="px-4 py-3 font-medium">Title</th>
+              <th class="px-4 py-3 font-medium">Username</th>
               <th class="px-4 py-3 font-medium">Email</th>
               <th class="px-4 py-3 font-medium">Status</th>
               <th class="px-4 py-3 font-medium">Role</th>
@@ -133,15 +54,15 @@ watchEffect(async () => {
           <tbody>
             <tr
               class="odd:bg-white even:bg-slate-50 text-sm text-slate-900"
-              v-for="(v, i) in tableData"
+              v-for="item in items" :key="item.ID"
             >
-              <td class="px-4 py-3 whitespace-nowrap">{{ v.name }}</td>
-              <td class="px-4 py-3 whitespace-nowrap">{{ v.title }}</td>
-              <td class="px-4 py-3 whitespace-nowrap">{{ v.email }}</td>
+              <td class="px-4 py-3 whitespace-nowrap">{{ item.nama_lengkap }}</td>
+              <td class="px-4 py-3 whitespace-nowrap">{{ item.username }}</td>
+              <td class="px-4 py-3 whitespace-nowrap">{{ item.email }}</td>
               <td class="px-4 py-3 whitespace-nowrap text-xs font-medium">
                 <span
                   class="bg-green-100 text-green-600 px-2 py-0.5 rounded-full"
-                  v-if="v.status === 1"
+                  v-if="item.aktif === 'Y'"
                 >
                   Active
                 </span>
@@ -152,7 +73,7 @@ watchEffect(async () => {
                   InActive
                 </span>
               </td>
-              <td class="px-4 py-3 whitespace-nowrap">{{ v.role }}</td>
+              <td class="px-4 py-3 whitespace-nowrap">{{ item.keterangan }}</td>
               <td class="h-[44px] flex items-center gap-1">
                 <PencilIcon class="w-4 h-4 cursor-pointer" />
                 <TrashIcon class="w-4 h-4 cursor-pointer" />
