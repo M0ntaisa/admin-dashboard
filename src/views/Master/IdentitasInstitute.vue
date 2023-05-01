@@ -1,4 +1,31 @@
-<script setup lang="ts"></script>
+<script>
+// import axios
+import axios from 'axios';
+
+export default {
+  data() {
+    return {
+      items: [],
+    };
+  },
+  created() {
+    this.getIdentitas();
+  },
+  methods: {
+    // get all products
+    async getIdentitas() {
+      try {
+        const response = await axios.get("http://localhost:5000/identitas");
+        this.items = response.data;
+        console.log(this.items);
+      } catch (error) {
+        console.log(error);
+      }
+    },
+  },
+};
+
+</script>
 
 <template>
   <main class="bg-gray-100 p-4">
