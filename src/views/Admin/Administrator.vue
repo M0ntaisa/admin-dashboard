@@ -1,6 +1,4 @@
 <script>
-import { ref, watchEffect } from "vue";
-import { PencilIcon, TrashIcon } from "@heroicons/vue/24/outline";
 // import axios
 import axios from 'axios';
 
