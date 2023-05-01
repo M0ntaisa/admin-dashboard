@@ -9,11 +9,11 @@ export default {
     };
   },
   created() {
-    this.getIdentitas();
+    this.getAdministrator();
   },
   methods: {
-    // get all products
-    async getIdentitas() {
+    // get all Administrator
+    async getAdministrator() {
       try {
         const response = await axios.get("http://localhost:5000/administrator");
         this.items = response.data;

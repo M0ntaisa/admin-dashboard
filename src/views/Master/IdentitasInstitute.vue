@@ -29,32 +29,51 @@ export default {
 
 <template>
   <main class="bg-gray-100 p-4">
-    <form action="#" method="POST">
-      <div class="shadow rounded overflow-hidden">
-        <div class="space-y-6 bg-white px-4 py-5 sm:p-6">
-          
-        </div>
-        <div class="bg-gray-50 px-4 py-3 text-right sm:px-6">
-         
-        </div>
+    <div class="bg-white rounded shadow overflow-hidden">
+      <div class="flex justify-between items-center p-4">
+        <h1>Users</h1>
+        <button class="bg-indigo-600 rounded text-white px-4 py-2 text-sm">
+          Sample
+        </button>
       </div>
-    </form>
-
-    <form action="#" method="POST" class="mt-4">
-      <div class="shadow rounded overflow-hidden">
-        
-        <div class="bg-gray-50 px-4 py-3 text-right sm:px-6">
-          
-        </div>
+      <div class="overflow-x-auto">
+        <table class="w-full">
+          <thead class="bg-slate-50 border-b border-slate-200">
+            <tr class="text-slate-900 text-sm text-left">
+              <th class="px-4 py-3 font-medium rounded-tl-md">Kode Institusi</th>
+              <th class="px-4 py-3 font-medium">Kode Hukum</th>
+              <th class="px-4 py-3 font-medium">Nama Institusi</th>
+              <th class="px-4 py-3 font-medium">Alamat</th>
+              <th class="px-4 py-3 font-medium">Kota</th>
+              <th class="px-4 py-3 font-medium">Kode Pos</th>
+              <th class="px-4 py-3 font-medium">Telepon</th>
+              <th class="px-4 py-3 font-medium">Email</th>
+              <th class="px-4 py-3 font-medium">Website</th>
+              <th class="px-4 py-3 font-medium rounded-tr-md"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              class="odd:bg-white even:bg-slate-50 text-sm text-slate-900"
+              v-for="item in items" :key="item.ID"
+            >
+              <td class="px-4 py-3 whitespace-nowrap">{{ item.Identitas_ID }}</td>
+              <td class="px-4 py-3 whitespace-nowrap">{{ item.KodeHukum }}</td>
+              <td class="px-4 py-3 whitespace-nowrap">{{ item.Nama_Identitas }}</td>
+              <td class="px-4 py-3 whitespace-nowrap">{{ item.Alamat1 }}</td>
+              <td class="px-4 py-3 whitespace-nowrap">{{ item.Kota }}</td>
+              <td class="px-4 py-3 whitespace-nowrap">{{ item.KodePos }}</td>
+              <td class="px-4 py-3 whitespace-nowrap">{{ item.Telepon }}</td>
+              <td class="px-4 py-3 whitespace-nowrap">{{ item.Email }}</td>
+              <td class="px-4 py-3 whitespace-nowrap">{{ item.Website }}</td>
+              <td class="h-[44px] flex items-center gap-1">
+                <PencilIcon class="w-4 h-4 cursor-pointer" />
+                <TrashIcon class="w-4 h-4 cursor-pointer" />
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
-    </form>
-    <form action="#" method="POST" class="mt-4">
-      <div class="shadow rounded overflow-hidden">
-        
-        <div class="bg-gray-50 px-4 py-3 text-right sm:px-6">
-          
-        </div>
-      </div>
-    </form>
+    </div>
   </main>
 </template>
