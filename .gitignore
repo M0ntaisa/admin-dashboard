@@ -25,6 +25,7 @@ src/views/Admin/*
 !src/views/Akademik/KalenderAkademik.vue
 !src/views/Master/IdentitasInstitute.vue
 !src/views/Master/ProgramStudi.vue
+!src/views/Master/Program.vue
 !src/views/Admin/Administrator.vue
 !src/views/Admin/Akademik.vue
 !src/views/Admin/HakModul.vue

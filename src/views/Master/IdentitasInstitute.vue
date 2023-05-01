@@ -31,7 +31,7 @@ export default {
   <main class="bg-gray-100 p-4">
     <div class="bg-white rounded shadow overflow-hidden">
       <div class="flex justify-between items-center p-4">
-        <h1>Users</h1>
+        <h1>Identitas Institusi</h1>
         <button class="bg-indigo-600 rounded text-white px-4 py-2 text-sm">
           Sample
         </button>
