@@ -23,6 +23,7 @@ const router = createRouter({
         },
         {
           path: "home",
+          name: "Home",
           component: HomeView,
         },
         {
@@ -43,6 +44,11 @@ const router = createRouter({
         },
         {
           path: "Admin/administrator",
+          component: Administrator,
+        },
+        {
+          path: "Admin/administrator/add",
+          name: "Admin Add",
           component: Administrator,
         },
         {
