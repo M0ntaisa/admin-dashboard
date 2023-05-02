@@ -118,6 +118,40 @@
               />
             </div>
 
+            <div class="col-span-6 sm:col-span-3">
+              <label
+                htmlFor="institusi"
+                class="block text-sm font-medium text-gray-700"
+              >
+                Institusi
+              </label>
+              <select
+                id="institusi"
+                name="institusi"
+                autoComplete="institusi-name"
+                class="mt-1 block w-full rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+              >
+                <option>- pilih institusi -</option>
+              </select>
+            </div>
+
+            <div class="col-span-6 sm:col-span-3">
+              <label
+                htmlFor="prodi"
+                class="block text-sm font-medium text-gray-700"
+              >
+                Program Studi
+              </label>
+              <select
+                id="prodi"
+                name="prodi"
+                autoComplete="prodi-name"
+                class="mt-1 block w-full rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+              >
+                <option>- pilih prodi -</option>
+              </select>
+            </div>
+
             <div>
               <label class="block text-sm font-medium text-gray-700">
                 Photo
