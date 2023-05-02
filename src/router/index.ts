@@ -6,6 +6,7 @@ import IdentitasInstitute from "@/views/Master/IdentitasInstitute.vue";
 import ProgramStudi from "@/views/Master/ProgramStudi.vue";
 import Program from "@/views/Master/Program.vue";
 import Administrator from "@/views/Admin/Administrator.vue";
+import AdminAdd from "@/views/Admin/AdminAdd.vue";
 import Akademik from "@/views/Admin/Akademik.vue";
 import HakModul from "@/views/Admin/HakModul.vue";
 
@@ -49,7 +50,7 @@ const router = createRouter({
         {
           path: "Admin/administrator/add",
           name: "Admin Add",
-          component: Administrator,
+          component: AdminAdd,
         },
         {
           path: "Admin/akademik",
