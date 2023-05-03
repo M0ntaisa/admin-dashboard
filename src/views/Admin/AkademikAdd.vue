@@ -1,15 +1,37 @@
 <script>
 import { defineComponent } from 'vue';
+// import axios
+import axios from 'axios';
 
 export default defineComponent({
   name: 'MyComponent',
+  data() {
+    return {
+      items: [],
+    };
+  },
+  created() {
+    this.getInstitusi();
+  },
   methods: {
+    // get institusi
+    async getInstitusi() {
+      try {
+        const response = await axios.get("http://localhost:5000/administrator");
+        this.items = response.data;
+        console.log(this.items);
+      } catch (error) {
+        console.log(error);
+      }
+    },
     uploadFile(event) {
       const file = event.target.files[0];
       // call your upload function here, passing the file as an argument
     },
   },
 });
+
+
 </script>
 
 <template>
