@@ -179,10 +179,9 @@ export default defineComponent({
                 name="institusi"
                 autoComplete="institusi-name"
                 class="mt-1 block w-full rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
-                v-for="institute in institutes" :key="institute.ID"
               >
                 <option>- pilih institusi -</option>
-                <option value="{{ institute.Identitas_ID }}">{{ institute.Nama_Identitas }}</option>
+                <option v-for="institute in institutes" :key="institute.ID" :value="institute.Identitas_ID">{{ institute.Nama_Identitas }}</option>
               </select>
             </div>
 
@@ -200,6 +199,7 @@ export default defineComponent({
                 class="mt-1 block w-full rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
               >
                 <option>- pilih prodi -</option>
+                <option v-for="prodi in prodis" :key="prodi.ID" :value="prodi.Jurusan_ID">{{ prodi.nama_jurusan }}</option>
               </select>
             </div>
 
