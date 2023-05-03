@@ -12,18 +12,32 @@ export default defineComponent({
   },
   created() {
     this.getInstitusi();
+    this.getProdi();
   },
   methods: {
     // get institusi
     async getInstitusi() {
       try {
-        const response = await axios.get("http://localhost:5000/administrator");
+        const response = await axios.get("http://localhost:5000/identitas-code");
         this.items = response.data;
         console.log(this.items);
       } catch (error) {
         console.log(error);
       }
     },
+
+    // get prodi
+    async getProdi() {
+      try {
+        const response = await axios.get("http://localhost:5000/prodi-code");
+        this.items = response.data;
+        console.log(this.items);
+      } catch (error) {
+        console.log(error);
+      }
+    },
+
+
     uploadFile(event) {
       const file = event.target.files[0];
       // call your upload function here, passing the file as an argument
