@@ -1,4 +1,16 @@
-<script setup lang="ts"></script>
+<script>
+import { defineComponent } from 'vue';
+
+export default defineComponent({
+  name: 'MyComponent',
+  methods: {
+    uploadFile(event) {
+      const file = event.target.files[0];
+      // call your upload function here, passing the file as an argument
+    },
+  },
+});
+</script>
 
 <template>
   <main class="bg-gray-100 p-4">
