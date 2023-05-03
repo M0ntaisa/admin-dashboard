@@ -7,7 +7,8 @@ export default defineComponent({
   name: 'MyComponent',
   data() {
     return {
-      items: [],
+      institutes: [],
+      prodis: [],
     };
   },
   created() {
@@ -19,8 +20,8 @@ export default defineComponent({
     async getInstitusi() {
       try {
         const response = await axios.get("http://localhost:5000/identitas-code");
-        this.items = response.data;
-        console.log(this.items);
+        this.institutes = response.data;
+        console.log(this.institutes);
       } catch (error) {
         console.log(error);
       }
@@ -30,8 +31,8 @@ export default defineComponent({
     async getProdi() {
       try {
         const response = await axios.get("http://localhost:5000/prodi-code");
-        this.items = response.data;
-        console.log(this.items);
+        this.prodis = response.data;
+        console.log(this.prodis);
       } catch (error) {
         console.log(error);
       }
