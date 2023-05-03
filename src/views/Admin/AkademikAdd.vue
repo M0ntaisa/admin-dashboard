@@ -185,9 +185,16 @@ export default defineComponent({
                 <button
                   type="button"
                   class="ml-5 rounded-md border border-gray-300 bg-white py-2 px-3 text-sm font-medium leading-4 text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                  @click="$refs.fileInput.click()"
                 >
                   Change
                 </button>
+                <input
+                  ref="fileInput"
+                  type="file"
+                  class="hidden"
+                  @change="uploadFile"
+                />
               </div>
             </div>
           </div>
