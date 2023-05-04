@@ -16,6 +16,7 @@
     "@headlessui/vue": "^1.7.2",
     "@heroicons/vue": "^2.0.11",
     "@vue/compiler-sfc": "3.2",
+    "@vuepic/vue-datepicker": "^5.0.1",
     "apexcharts": "^3.35.5",
     "axios": "^1.4.0",
     "chart.js": "^3.9.1",

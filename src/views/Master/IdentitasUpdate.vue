@@ -1,5 +1,7 @@
 <script>
 import { defineComponent } from 'vue';
+import VueDatePicker from '@vuepic/vue-datepicker';
+import '@vuepic/vue-datepicker/dist/main.css';
 
 export default defineComponent({
   name: 'MyComponent',
@@ -9,6 +11,12 @@ export default defineComponent({
       // call your upload function here, passing the file as an argument
     },
   },
+  components: { VueDatePicker },
+  data() {
+    return {
+      date: null,
+    };
+  }
 });
 </script>
 
@@ -167,6 +175,19 @@ export default defineComponent({
                   placeholder="www.example.com"
                 />
               </div>
+            </div>
+
+            <div class="col-span-6 sm:col-span-4">
+              <label
+                htmlFor="first-date"
+                class="block text-sm font-medium text-gray-700"
+              >
+                Tanggal Berdiri
+              </label>
+              <VueDatePicker 
+                v-model="date"
+                class="mt-1 block w-full rounded-md"
+              ></VueDatePicker>
             </div>
 
             <div class="col-span-6 sm:col-span-3">
