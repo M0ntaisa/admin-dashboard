@@ -82,7 +82,7 @@ export default defineComponent({
               />
             </div>
             
-            <div class="col-span-6 sm:col-span-4">
+            <div class="col-span-6 sm:col-span-4 lg:col-span-3">
               <label
                 htmlFor="kota"
                 class="block text-sm font-medium text-gray-700"
@@ -94,6 +94,22 @@ export default defineComponent({
                 name="kota"
                 id="kota"
                 autoComplete="kota"
+                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+              />
+            </div>
+
+            <div class="col-span-6 sm:col-span-3 lg:col-span-3">
+              <label
+                htmlFor="postal-code"
+                class="block text-sm font-medium text-gray-700"
+              >
+                Kode Pos
+              </label>
+              <input
+                type="text"
+                name="postal-code"
+                id="postal-code"
+                autoComplete="postal-code"
                 class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
               />
             </div>

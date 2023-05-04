@@ -34,42 +34,42 @@ const router = createRouter({
           component: KalenderAkademik,
         },
         {
-          path: "Master/identitas-institusi",
+          path: "master/identitas-institusi",
           component: IdentitasInstitute,
         },
         {
-          path: "Master/identitas-institusi/update",
+          path: "master/identitas-institusi/update",
           name: "Identitas Update",
           component: IdentitasUpdate,
         },
         {
-          path: "Master/prodi",
+          path: "master/prodi",
           component: ProgramStudi,
         },
         {
-          path: "Master/program",
+          path: "master/program",
           component: Program,
         },
         {
-          path: "Admin/administrator",
+          path: "admin/administrator",
           component: Administrator,
         },
         {
-          path: "Admin/administrator/add",
+          path: "admin/administrator/add",
           name: "Admin Add",
           component: AdminAdd,
         },
         {
-          path: "Admin/akademik",
+          path: "admin/akademik",
           component: Akademik,
         },
         {
-          path: "Admin/akademik/add",
+          path: "admin/akademik/add",
           name: "Akademik Add",
           component: AkademikAdd,
         },
         {
-          path: "Admin/hak-modul",
+          path: "admin/hak-modul",
           component: HakModul,
         },
       ],
