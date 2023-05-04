@@ -1,6 +1,7 @@
 <script>
 // import axios
 import axios from 'axios';
+import { PencilIcon, TrashIcon } from "@heroicons/vue/24/outline";
 
 export default {
   data() {
@@ -23,6 +24,10 @@ export default {
       }
     },
   },
+  components: {
+    PencilIcon,
+    TrashIcon,
+  },
 };
 
 </script>
@@ -32,9 +37,6 @@ export default {
     <div class="bg-white rounded shadow overflow-hidden">
       <div class="flex justify-between items-center p-4">
         <h1>Identitas Institusi</h1>
-        <button class="bg-indigo-600 rounded text-white px-4 py-2 text-sm">
-          Sample
-        </button>
       </div>
       <div class="overflow-x-auto">
         <table class="w-full">
@@ -49,7 +51,7 @@ export default {
               <th class="px-4 py-3 font-medium">Telepon</th>
               <th class="px-4 py-3 font-medium">Email</th>
               <th class="px-4 py-3 font-medium">Website</th>
-              <th class="px-4 py-3 font-medium rounded-tr-md"></th>
+              <th class="px-4 py-3 font-medium rounded-tr-md">Action</th>
             </tr>
           </thead>
           <tbody>
@@ -67,7 +69,10 @@ export default {
               <td class="px-4 py-3 whitespace-nowrap">{{ item.Email }}</td>
               <td class="px-4 py-3 whitespace-nowrap">{{ item.Website }}</td>
               <td class="h-[44px] flex items-center gap-1">
-                <PencilIcon class="w-4 h-4 cursor-pointer" />
+                <router-link :to="{name: 'Identitas Update'}" class="button bg-amber-400 rounded text-black px-2 py-1 text-sm">
+                  <PencilIcon class="w-4 h-4 cursor-pointer" />
+                </router-link>
+                
                 <TrashIcon class="w-4 h-4 cursor-pointer" />
               </td>
             </tr>

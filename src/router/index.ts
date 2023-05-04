@@ -3,6 +3,7 @@ import LayoutView from "@/views/LayoutView.vue";
 import HomeView from "@/views/HomeView.vue";
 import KalenderAkademik from "@/views/Akademik/KalenderAkademik.vue";
 import IdentitasInstitute from "@/views/Master/IdentitasInstitute.vue";
+import IdentitasUpdate from "@/views/Master/IdentitasUpdate.vue";
 import ProgramStudi from "@/views/Master/ProgramStudi.vue";
 import Program from "@/views/Master/Program.vue";
 import Administrator from "@/views/Admin/Administrator.vue";
@@ -35,6 +36,11 @@ const router = createRouter({
         {
           path: "Master/identitas-institusi",
           component: IdentitasInstitute,
+        },
+        {
+          path: "Master/identitas-institusi/update",
+          name: "Identitas Update",
+          component: IdentitasUpdate,
         },
         {
           path: "Master/prodi",
