@@ -13,7 +13,7 @@ export default {
     this.getIdentitas();
   },
   methods: {
-    // get all products
+    // get identitas
     async getIdentitas() {
       try {
         const response = await axios.get("http://localhost:5000/identitas");
@@ -69,7 +69,7 @@ export default {
               <td class="px-4 py-3 whitespace-nowrap">{{ item.Email }}</td>
               <td class="px-4 py-3 whitespace-nowrap">{{ item.Website }}</td>
               <td class="h-[44px] flex items-center gap-1">
-                <router-link :to="{name: 'Identitas Update'}" class="button bg-amber-400 rounded text-black px-2 py-1 text-sm">
+                <router-link :to="{name: 'Identitas Update', params:{ id: item.ID }}" class="button bg-amber-400 rounded text-black px-2 py-1 text-sm">
                   <PencilIcon class="w-4 h-4 cursor-pointer" />
                 </router-link>
                 
