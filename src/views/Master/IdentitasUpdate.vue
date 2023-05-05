@@ -36,7 +36,18 @@ export default defineComponent({
     async getIdentitas() {
       try {
         const response = await axios.get("http://localhost:5000/identitas");
-        
+        this.kodeInstitusi = response.data.Identitas_ID;
+        this.kodeHukum = response.data.KodeHukum;
+        this.namaInstitusi = response.data.Nama_Identitas;
+        this.alamat = response.data.Alamat;
+        this.kota = response.data.Kota;
+        this.kodePos = response.data.KodePos;
+        this.telepon = response.data.Telepon;
+        this.email = response.data.Email;
+        this.website = response.data.Website;
+        this.tanggalBerdiri = response.data.TglMulai;
+        this.noAkta = response.data.NoAkta;
+        this.noSah = response.data.NoSah;
       } catch (error) {
         console.log(error);
       }
