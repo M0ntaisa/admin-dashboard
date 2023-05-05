@@ -5,18 +5,43 @@ import '@vuepic/vue-datepicker/dist/main.css';
 
 export default defineComponent({
   name: 'MyComponent',
+  components: { VueDatePicker },
+  data() {
+    return {
+      date: null,
+      kodeInstitusi = "",
+      kodeHukum = "",
+      namaInstitusi = "",
+      alamat = "",
+      kota = "",
+      kodePos = "",
+      telepon = "",
+      email = "",
+      website = "",
+      tanggalBerdiri = "",
+      noAkta = "",
+      noSah = "",
+    };
+  },
+  created() {
+    this.getIdentitas();
+  },
   methods: {
     uploadFile(event) {
       const file = event.target.files[0];
       // call your upload function here, passing the file as an argument
     },
+
+    // get identitas
+    async getIdentitas() {
+      try {
+        const response = await axios.get("http://localhost:5000/identitas");
+        
+      } catch (error) {
+        console.log(error);
+      }
+    },
   },
-  components: { VueDatePicker },
-  data() {
-    return {
-      date: null,
-    };
-  }
 });
 </script>
 
