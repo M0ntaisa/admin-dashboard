@@ -41,7 +41,7 @@ export default defineComponent({
         this.kodeInstitusi = response.data[0].Identitas_ID;
         this.kodeHukum = response.data[0].KodeHukum;
         this.namaInstitusi = response.data[0].Nama_Identitas;
-        this.alamat = response.data[0].Alamat;
+        this.alamat = response.data[0].Alamat1;
         this.kota = response.data[0].Kota;
         this.kodePos = response.data[0].KodePos;
         this.telepon = response.data[0].Telepon;
@@ -94,6 +94,7 @@ export default defineComponent({
                 id="law-code"
                 autoComplete="law-code"
                 class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                v-model="kodeHukum"
               />
             </div>
 
@@ -110,6 +111,7 @@ export default defineComponent({
                 id="nama-institusi"
                 autoComplete="institusi"
                 class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                v-model="namaInstitusi"
               />
             </div>
 
@@ -126,6 +128,7 @@ export default defineComponent({
                 id="alamat"
                 autoComplete="alamat"
                 class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                v-model="alamat"
               />
             </div>
             
@@ -142,6 +145,7 @@ export default defineComponent({
                 id="kota"
                 autoComplete="kota"
                 class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                v-model="kota"
               />
             </div>
 
@@ -158,6 +162,7 @@ export default defineComponent({
                 id="postal-code"
                 autoComplete="postal-code"
                 class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                v-model="kodePos"
               />
             </div>
 
@@ -174,6 +179,7 @@ export default defineComponent({
                 id="telepon"
                 autoComplete="telepon"
                 class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                v-model="telepon"
               />
             </div>
 
@@ -190,6 +196,7 @@ export default defineComponent({
                 id="email-address"
                 autoComplete="email"
                 class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                v-model="email"
               />
             </div>
 
@@ -212,6 +219,7 @@ export default defineComponent({
                   id="company-website"
                   class="block w-full flex-1 rounded-none rounded-r-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                   placeholder="www.example.com"
+                  v-model="website"
                 />
               </div>
             </div>
@@ -224,7 +232,7 @@ export default defineComponent({
                 Tanggal Berdiri
               </label>
               <VueDatePicker 
-                v-model="date"
+                v-model="tanggalBerdiri"
                 class="mt-1 block w-full rounded-md"
               ></VueDatePicker>
             </div>
@@ -242,6 +250,7 @@ export default defineComponent({
                 id="no-akta"
                 autoComplete="no-akta"
                 class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                v-model="noAkta"
               />
             </div>
 
@@ -258,6 +267,7 @@ export default defineComponent({
                 id="no-sah"
                 autoComplete="no-sah"
                 class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                v-model="noSah"
               />
             </div>
 
