@@ -54,6 +54,22 @@ export default defineComponent({
         console.log(error);
       }
     },
+    // update identitas
+    async updateIdentitas() {
+      try {
+        const id = this.$route.params.id;
+        await axios.put(
+          `http://localhost:5000/identitas/${id}`, 
+          {
+           
+          }
+        );
+        
+        this.$router.push("/index");
+      } catch (error) {
+        
+      }
+    },
   },
 });
 </script>
