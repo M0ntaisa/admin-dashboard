@@ -61,13 +61,24 @@ export default defineComponent({
         await axios.put(
           `http://localhost:5000/identitas/${id}`, 
           {
-           
+            Identitas_ID:this.kodeInstitusi,
+            KodeHukum:this.kodeHukum,
+            Nama_Identitas:this.namaInstitusi,
+            Alamat1:this.alamat,
+            Kota:this.kota,
+            KodePos:this.kodePos,
+            Telepon:this.telepon,
+            Email:this.email,
+            Website:this.website,
+            TglMulai:this.tanggalBerdiri,
+            NoAkta:this.noAkta,
+            NoSah:this.noSah,
           }
         );
-        
+        ( this.kodeInstitusi = "" ), ( this.kodeHukum = "" ), ( this.namaInstitusi = "" ), ( this.alamat = "" ), ( this.kota = "" ), ( this.kodePos = "" ), ( this.telepon = "" ), ( this.email = "" ), ( this.website = "" ), ( this.tanggalBerdiri = "" ), ( this.noAkta = "" ), ( this.noSah = "" );
         this.$router.push("/index");
       } catch (error) {
-        
+        console.log(error);
       }
     },
   },
