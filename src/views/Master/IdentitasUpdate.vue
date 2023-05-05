@@ -2,6 +2,8 @@
 import { defineComponent } from 'vue';
 import VueDatePicker from '@vuepic/vue-datepicker';
 import '@vuepic/vue-datepicker/dist/main.css';
+// import axios
+import axios from 'axios';
 
 export default defineComponent({
   name: 'MyComponent',
@@ -9,18 +11,18 @@ export default defineComponent({
   data() {
     return {
       date: null,
-      kodeInstitusi = "",
-      kodeHukum = "",
-      namaInstitusi = "",
-      alamat = "",
-      kota = "",
-      kodePos = "",
-      telepon = "",
-      email = "",
-      website = "",
-      tanggalBerdiri = "",
-      noAkta = "",
-      noSah = "",
+      kodeInstitusi: "",
+      kodeHukum: "",
+      namaInstitusi: "",
+      alamat: "",
+      kota: "",
+      kodePos: "",
+      telepon: "",
+      email: "",
+      website: "",
+      tanggalBerdiri: "",
+      noAkta: "",
+      noSah: "",
     };
   },
   created() {
@@ -36,18 +38,18 @@ export default defineComponent({
     async getIdentitas() {
       try {
         const response = await axios.get("http://localhost:5000/identitas");
-        this.kodeInstitusi = response.data.Identitas_ID;
-        this.kodeHukum = response.data.KodeHukum;
-        this.namaInstitusi = response.data.Nama_Identitas;
-        this.alamat = response.data.Alamat;
-        this.kota = response.data.Kota;
-        this.kodePos = response.data.KodePos;
-        this.telepon = response.data.Telepon;
-        this.email = response.data.Email;
-        this.website = response.data.Website;
-        this.tanggalBerdiri = response.data.TglMulai;
-        this.noAkta = response.data.NoAkta;
-        this.noSah = response.data.NoSah;
+        this.kodeInstitusi = response.data[0].Identitas_ID;
+        this.kodeHukum = response.data[0].KodeHukum;
+        this.namaInstitusi = response.data[0].Nama_Identitas;
+        this.alamat = response.data[0].Alamat;
+        this.kota = response.data[0].Kota;
+        this.kodePos = response.data[0].KodePos;
+        this.telepon = response.data[0].Telepon;
+        this.email = response.data[0].Email;
+        this.website = response.data[0].Website;
+        this.tanggalBerdiri = response.data[0].TglMulai;
+        this.noAkta = response.data[0].NoAkta;
+        this.noSah = response.data[0].NoSah;
       } catch (error) {
         console.log(error);
       }
@@ -75,6 +77,7 @@ export default defineComponent({
                 id="institute-code"
                 autoComplete="institute-code"
                 class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                v-model="kodeInstitusi"
               />
             </div>
 
