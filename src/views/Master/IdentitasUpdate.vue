@@ -58,6 +58,7 @@ export default defineComponent({
     async updateIdentitas() {
       try {
         const id = this.$route.params.id;
+        console.log(id);
         await axios.put(
           `http://localhost:5000/identitas/${id}`, 
           {
@@ -76,7 +77,7 @@ export default defineComponent({
           }
         );
         ( this.kodeInstitusi = "" ), ( this.kodeHukum = "" ), ( this.namaInstitusi = "" ), ( this.alamat = "" ), ( this.kota = "" ), ( this.kodePos = "" ), ( this.telepon = "" ), ( this.email = "" ), ( this.website = "" ), ( this.tanggalBerdiri = "" ), ( this.noAkta = "" ), ( this.noSah = "" );
-        this.$router.push("/index");
+        this.$router.push("/master/identitas-institusi");
       } catch (error) {
         console.log(error);
       }
@@ -87,7 +88,7 @@ export default defineComponent({
 
 <template>
   <main class="bg-gray-100 p-4">
-    <form action="#" method="POST" class="mt-4">
+    <form class="mt-4">
       <div class="shadow rounded overflow-hidden">
         <div class="bg-white px-4 py-5 sm:p-6">
           <div class="grid grid-cols-6 gap-6">
@@ -176,7 +177,7 @@ export default defineComponent({
               />
             </div>
 
-            <div class="col-span-6 sm:col-span-3 lg:col-span-3">
+            <div class="col-span-6 sm:col-span-4 lg:col-span-3">
               <label
                 htmlFor="postal-code"
                 class="block text-sm font-medium text-gray-700"
@@ -304,6 +305,7 @@ export default defineComponent({
           <button
             type="submit"
             class="inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+            @click="updateIdentitas"
           >
             Save
           </button>
