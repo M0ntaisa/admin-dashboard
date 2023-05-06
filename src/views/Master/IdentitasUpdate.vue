@@ -58,7 +58,6 @@ export default defineComponent({
     async updateIdentitas() {
       try {
         const id = this.$route.params.id;
-        console.log(id);
         await axios.put(
           `http://localhost:5000/identitas/${id}`, 
           {
