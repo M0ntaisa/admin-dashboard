@@ -31,10 +31,12 @@ const router = createRouter({
         },
         {
           path: "akademik/kalender-akademik",
+          name: "Kalender Akademik",
           component: KalenderAkademik,
         },
         {
           path: "master/identitas-institusi",
+          name: "Identitas Institusi",
           component: IdentitasInstitute,
         },
         {
