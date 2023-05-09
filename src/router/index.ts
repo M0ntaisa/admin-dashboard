@@ -56,6 +56,7 @@ const router = createRouter({
         },
         {
           path: "admin/administrator",
+          name: "Administrator",
           component: Administrator,
         },
         {
@@ -65,6 +66,7 @@ const router = createRouter({
         },
         {
           path: "admin/akademik",
+          name: "Akademik",
           component: Akademik,
         },
         {
@@ -74,6 +76,7 @@ const router = createRouter({
         },
         {
           path: "admin/hak-modul",
+          name: "Hak Modul",
           component: HakModul,
         },
       ],
