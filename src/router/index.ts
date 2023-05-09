@@ -46,10 +46,12 @@ const router = createRouter({
         },
         {
           path: "master/prodi",
+          name: "Program Studi",
           component: ProgramStudi,
         },
         {
           path: "master/program",
+          name: "Program",
           component: Program,
         },
         {
