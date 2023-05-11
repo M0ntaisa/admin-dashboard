@@ -78,7 +78,9 @@ export default {
               </td>
               <td class="px-4 py-3 whitespace-nowrap">{{ item.keterangan }}</td>
               <td class="h-[44px] flex items-center gap-1">
-                <PencilIcon class="w-4 h-4 cursor-pointer" />
+                <router-link :to="{name: 'Admin Update', params:{ id: item.ID }}" class="button bg-amber-400 rounded text-black px-2 py-1 text-sm">
+                  <PencilIcon class="w-4 h-4 cursor-pointer" />
+                </router-link>
                 <TrashIcon class="w-4 h-4 cursor-pointer" />
               </td>
             </tr>
