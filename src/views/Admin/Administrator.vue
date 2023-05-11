@@ -1,6 +1,7 @@
 <script>
 // import axios
 import axios from 'axios';
+import { PencilIcon, TrashIcon } from "@heroicons/vue/24/outline";
 
 export default {
   data() {
@@ -22,6 +23,10 @@ export default {
         console.log(error);
       }
     },
+  },
+  components: {
+    PencilIcon,
+    TrashIcon,
   },
 };
 
