@@ -1,13 +1,42 @@
 <script>
 import { defineComponent } from 'vue';
+// import axios
+import axios from 'axios';
 
 export default defineComponent({
   name: 'MyComponent',
+  data() {
+    return {
+      nama_lengkap: "",
+      email: "",
+      username: "",
+      telepon: "",
+      keterangan: "",
+    };
+  },
+  created() {
+    this.getAdminById();
+  },
   methods: {
     uploadFile(event) {
       const file = event.target.files[0];
       // call your upload function here, passing the file as an argument
     },
+
+    // get admin by id
+    async getAdminById() {
+      try {
+        const id = this.$route.params.id;
+        const response = await axios.get(`http://localhost:5000/administrator/${id}`);
+        this.nama_lengkap = response.data.nama_lengkap;
+        this.email = response.data.email;
+        this.username = response.data.username;
+        this.telepon = response.data.telepon;
+        this.keterangan = response.data.keterangan;
+      } catch (error) {
+        console.log(error);
+      }
+    }
   },
 });
 </script>
@@ -18,23 +47,24 @@ export default defineComponent({
       <div class="shadow rounded overflow-hidden">
         <div class="bg-white px-4 py-5 sm:p-6">
           <div class="grid grid-cols-6 gap-6">
-            <div class="col-span-6 sm:col-span-3">
+            <div class="col-span-6 sm:col-span-4">
               <label
-                htmlFor="first-name"
+                htmlFor="name"
                 class="block text-sm font-medium text-gray-700"
               >
-                First name
+                Name
               </label>
               <input
                 type="text"
-                name="first-name"
-                id="first-name"
-                autoComplete="given-name"
+                name="name"
+                id="name"
+                autoComplete="name"
                 class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                v-model="nama_lengkap"
               />
             </div>
 
-            <div class="col-span-6 sm:col-span-3">
+            <!-- <div class="col-span-6 sm:col-span-3">
               <label
                 htmlFor="last-name"
                 class="block text-sm font-medium text-gray-700"
@@ -48,7 +78,7 @@ export default defineComponent({
                 autoComplete="family-name"
                 class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
               />
-            </div>
+            </div> -->
 
             <div class="col-span-6 sm:col-span-4">
               <label
@@ -63,6 +93,7 @@ export default defineComponent({
                 id="email-address"
                 autoComplete="email"
                 class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                v-model="email"
               />
             </div>
 
@@ -79,6 +110,7 @@ export default defineComponent({
                 id="username"
                 autoComplete="username"
                 class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                v-model="username"
               />
             </div>
             
@@ -111,6 +143,7 @@ export default defineComponent({
                 id="telepon"
                 autoComplete="telepon"
                 class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                v-model="telepon"
               />
             </div>
 
@@ -127,6 +160,7 @@ export default defineComponent({
                 id="keterangan"
                 autoComplete="keterangan"
                 class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                v-model="keterangan"
               />
             </div>
 
