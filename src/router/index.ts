@@ -8,6 +8,7 @@ import ProgramStudi from "@/views/Master/ProgramStudi.vue";
 import Program from "@/views/Master/Program.vue";
 import Administrator from "@/views/Admin/Administrator.vue";
 import AdminAdd from "@/views/Admin/AdminAdd.vue";
+import AdminUpdate from "@/views/Admin/AdminUpdate.vue";
 import Akademik from "@/views/Admin/Akademik.vue";
 import AkademikAdd from "@/views/Admin/AkademikAdd.vue";
 import HakModul from "@/views/Admin/HakModul.vue";
@@ -63,6 +64,11 @@ const router = createRouter({
           path: "admin/administrator/add",
           name: "Admin Add",
           component: AdminAdd,
+        },
+        {
+          path: "admin/administrator/update",
+          name: "Admin Update",
+          component: AdminUpdate,
         },
         {
           path: "admin/akademik",
