@@ -18,23 +18,23 @@ export default defineComponent({
       <div class="shadow rounded overflow-hidden">
         <div class="bg-white px-4 py-5 sm:p-6">
           <div class="grid grid-cols-6 gap-6">
-            <div class="col-span-6 sm:col-span-3">
+            <div class="col-span-6 sm:col-span-4">
               <label
-                htmlFor="first-name"
+                htmlFor="name"
                 class="block text-sm font-medium text-gray-700"
               >
-                First name
+                Name
               </label>
               <input
                 type="text"
-                name="first-name"
-                id="first-name"
-                autoComplete="given-name"
+                name="name"
+                id="name"
+                autoComplete="name"
                 class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
               />
             </div>
 
-            <div class="col-span-6 sm:col-span-3">
+            <!-- <div class="col-span-6 sm:col-span-3">
               <label
                 htmlFor="last-name"
                 class="block text-sm font-medium text-gray-700"
@@ -48,7 +48,7 @@ export default defineComponent({
                 autoComplete="family-name"
                 class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
               />
-            </div>
+            </div> -->
 
             <div class="col-span-6 sm:col-span-4">
               <label
