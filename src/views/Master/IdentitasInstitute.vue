@@ -1,12 +1,26 @@
-<script>
+<script lang="ts">
+import { PencilIcon, TrashIcon } from "@heroicons/vue/24/outline";
+
 // import axios
 import axios from 'axios';
-import { PencilIcon, TrashIcon } from "@heroicons/vue/24/outline";
+
+interface Identitas {
+  ID: number;
+  Identitas_ID: number;
+  KodeHukum: string;
+  Nama_Identitas: string;
+  Alamat1: string;
+  Kota: string;
+  KodePos: string;
+  Telepon: string;
+  Email: string;
+  Website: string;
+};
 
 export default {
   data() {
     return {
-      items: [],
+      items: [] as Identitas[],
     };
   },
   created() {
