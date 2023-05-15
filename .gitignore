@@ -3,6 +3,8 @@ cypress
 public
 src/*
 
+!src/App.vue
+
 !src/components
 !src/router
 !src/views
