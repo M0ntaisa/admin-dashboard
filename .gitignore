@@ -4,6 +4,7 @@ public
 src/*
 
 !src/App.vue
+!src/main.ts
 
 !src/components
 !src/router
