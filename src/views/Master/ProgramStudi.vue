@@ -1,11 +1,24 @@
-<script>
+<script lang="ts">
+import { PencilIcon, TrashIcon } from "@heroicons/vue/24/outline";
+
 // import axios
 import axios from 'axios';
+
+interface Jurusan {
+  ID: number;
+  Identitas_ID: number;
+  nama_jurusan: string;
+  Jurusan_ID: number;
+  kprodi: string;
+  nama_fakultas: string;
+  jenjang: string;
+  Akreditasi: string;
+};
 
 export default {
   data() {
     return {
-      items: [],
+      items: [] as Jurusan[],
     };
   },
   created() {
@@ -23,6 +36,10 @@ export default {
       }
     },
   },
+  components: {
+    PencilIcon,
+    TrashIcon,
+  },
 };
 
 
@@ -33,9 +50,9 @@ export default {
     <div class="bg-white rounded shadow overflow-hidden">
       <div class="flex justify-between items-center p-4">
         <h1>Program Studi</h1>
-        <button class="bg-indigo-600 rounded text-white px-4 py-2 text-sm">
-          Sample
-        </button>
+        <router-link :to="{name: 'Prodi Add'}" class="bg-indigo-600 rounded text-white px-4 py-2 text-sm">
+          Tambah Data
+        </router-link>
       </div>
       <div class="overflow-x-auto">
         <table class="w-full">
@@ -48,7 +65,7 @@ export default {
               <th class="px-4 py-3 font-medium">Nama Fakultas</th>
               <th class="px-4 py-3 font-medium">Jenjang</th>
               <th class="px-4 py-3 font-medium">Akreditasi</th>
-              <th class="px-4 py-3 font-medium rounded-tr-md"></th>
+              <th class="px-4 py-3 font-medium rounded-tr-md">Action</th>
             </tr>
           </thead>
           <tbody>
@@ -64,8 +81,12 @@ export default {
               <td class="px-4 py-3 whitespace-nowrap">{{ item.jenjang }}</td>
               <td class="px-4 py-3 whitespace-nowrap">{{ item.Akreditasi }}</td>
               <td class="h-[44px] flex items-center gap-1">
-                <PencilIcon class="w-4 h-4 cursor-pointer" />
+                <router-link :to="{name: 'Prodi Update', params:{ id: item.ID }}" class="button bg-amber-400 rounded text-black px-2 py-1 text-sm">
+                  <PencilIcon class="w-4 h-4 cursor-pointer" />
+                </router-link>
                 <TrashIcon class="w-4 h-4 cursor-pointer" />
+                <!-- <router-link :to="{name: 'Prodi Delete', params:{ id: item.ID }}" class="button bg-red-600 rounded text-black px-2 py-1 text-sm">
+                </router-link> -->
               </td>
             </tr>
           </tbody>
