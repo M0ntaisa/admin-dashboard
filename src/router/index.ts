@@ -5,6 +5,8 @@ import KalenderAkademik from "@/views/Akademik/KalenderAkademik.vue";
 import IdentitasInstitute from "@/views/Master/IdentitasInstitute.vue";
 import IdentitasUpdate from "@/views/Master/IdentitasUpdate.vue";
 import ProgramStudi from "@/views/Master/ProgramStudi.vue";
+import ProgramStudiAdd from "@/views/Master/ProgramStudiAdd.vue";
+import ProgramStudiUpdate from "@/views/Master/ProgramStudiUpdate.vue";
 import Program from "@/views/Master/Program.vue";
 import Administrator from "@/views/Admin/Administrator.vue";
 import AdminAdd from "@/views/Admin/AdminAdd.vue";
@@ -41,7 +43,7 @@ const router = createRouter({
           component: IdentitasInstitute,
         },
         {
-          path: "master/identitas-institusi/update",
+          path: "master/identitas-institusi/update/:id",
           name: "Identitas Update",
           component: IdentitasUpdate,
         },
@@ -49,6 +51,16 @@ const router = createRouter({
           path: "master/prodi",
           name: "Program Studi",
           component: ProgramStudi,
+        },
+        {
+          path: "master/prodi-add",
+          name: "Prodi Add",
+          component: ProgramStudiAdd,
+        },
+        {
+          path: "master/prodi-update/:id",
+          name: "Prodi Update",
+          component: ProgramStudiUpdate,
         },
         {
           path: "master/program",
