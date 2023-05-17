@@ -30,6 +30,7 @@ src/views/Admin/*
 !src/views/Master/IdentitasUpdate.vue
 !src/views/Master/ProgramStudi.vue
 !src/views/Master/ProgramStudiAdd.vue
+!src/views/Master/ProgramStudiUpdate.vue
 !src/views/Master/Program.vue
 !src/views/Admin/Administrator.vue
 !src/views/Admin/AdminAdd.vue
