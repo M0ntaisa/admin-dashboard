@@ -19,131 +19,114 @@
           <div class="grid grid-cols-6 gap-6">
             <div class="col-span-6 sm:col-span-3">
               <label
-                htmlFor="first-name"
+                htmlFor="institusi"
                 class="block text-sm font-medium text-gray-700"
               >
-                First name
-              </label>
-              <input
-                type="text"
-                name="first-name"
-                id="first-name"
-                autoComplete="given-name"
-                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-              />
-            </div>
-
-            <div class="col-span-6 sm:col-span-3">
-              <label
-                htmlFor="last-name"
-                class="block text-sm font-medium text-gray-700"
-              >
-                Last name
-              </label>
-              <input
-                type="text"
-                name="last-name"
-                id="last-name"
-                autoComplete="family-name"
-                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-              />
-            </div>
-
-            <div class="col-span-6 sm:col-span-4">
-              <label
-                htmlFor="email-address"
-                class="block text-sm font-medium text-gray-700"
-              >
-                Email address
-              </label>
-              <input
-                type="text"
-                name="email-address"
-                id="email-address"
-                autoComplete="email"
-                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-              />
-            </div>
-
-            <div class="col-span-6 sm:col-span-3">
-              <label
-                htmlFor="country"
-                class="block text-sm font-medium text-gray-700"
-              >
-                Country
+                Institusi
               </label>
               <select
-                id="country"
-                name="country"
-                autoComplete="country-name"
+                id="institusi"
+                name="institusi"
+                autoComplete="institusi-name"
                 class="mt-1 block w-full rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
               >
-                <option>United States</option>
-                <option>Canada</option>
-                <option>Mexico</option>
+                <option>- Pilih -</option>
               </select>
             </div>
 
-            <div class="col-span-6">
+            <div class="col-span-6 sm:col-span-3">
               <label
-                htmlFor="street-address"
+                htmlFor="fakultas"
                 class="block text-sm font-medium text-gray-700"
               >
-                Street address
+                Fakultas
+              </label>
+              <select
+                id="fakultas"
+                name="fakultas"
+                autoComplete="fakultas-name"
+                class="mt-1 block w-full rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+              >
+                <option>- Pilih -</option>
+              </select>
+            </div>
+
+            <div class="col-span-12 sm:col-span-6">
+              <label
+                htmlFor="kodeProdi"
+                class="block text-sm font-medium text-gray-700"
+              >
+                Kode Program Studi
               </label>
               <input
                 type="text"
-                name="street-address"
-                id="street-address"
-                autoComplete="street-address"
+                name="kodeProdi"
+                id="kodeProdi"
+                autoComplete="kodeProdi"
                 class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
               />
             </div>
 
-            <div class="col-span-6 sm:col-span-6 lg:col-span-2">
+            <div class="col-span-12 sm:col-span-6">
               <label
-                htmlFor="city"
+                htmlFor="namaProdi"
                 class="block text-sm font-medium text-gray-700"
               >
-                City
+                Nama Program Studi
               </label>
               <input
                 type="text"
-                name="city"
-                id="city"
-                autoComplete="address-level2"
+                name="namaProdi"
+                id="namaProdi"
+                autoComplete="namaProdi"
                 class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
               />
             </div>
 
-            <div class="col-span-6 sm:col-span-3 lg:col-span-2">
+            <div class="col-span-12 sm:col-span-6">
               <label
-                htmlFor="region"
+                htmlFor="ketuaProdi"
                 class="block text-sm font-medium text-gray-700"
               >
-                State / Province
+                Ketua Program Studi
               </label>
               <input
                 type="text"
-                name="region"
-                id="region"
-                autoComplete="address-level1"
+                name="ketuaProdi"
+                id="ketuaProdi"
+                autoComplete="ketuaProdi"
                 class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
               />
             </div>
 
-            <div class="col-span-6 sm:col-span-3 lg:col-span-2">
+            <div class="col-span-6 sm:col-span-3">
               <label
-                htmlFor="postal-code"
+                htmlFor="jenjang"
                 class="block text-sm font-medium text-gray-700"
               >
-                ZIP / Postal code
+                Jenjang
               </label>
               <input
                 type="text"
-                name="postal-code"
-                id="postal-code"
-                autoComplete="postal-code"
+                name="jenjang"
+                id="jenjang"
+                autoComplete="jenjang"
+                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+              />
+            </div>
+
+            <div class="col-span-6 sm:col-span-3">
+              <label
+                htmlFor="akreditasi"
+                class="block text-sm font-medium text-gray-700"
+              >
+                Akreditasi
+              </label>
+              <input
+                type="text"
+                name="akreditasi"
+                id="akreditasi"
+                autoComplete="akreditasi"
                 class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
               />
             </div>
