@@ -1,13 +1,61 @@
 <script lang="ts">
   import { defineComponent } from 'vue';
 
+  // import axios
+  import axios from 'axios';
+
+  interface Identitas {
+    ID: number;
+    Identitas_ID: number;
+    Nama_Identitas: string;
+  };
+
+  interface Prodi {
+    ID: number;
+    Identitas_ID: number;
+    Jurusan_ID: number;
+    nama_jurusan: string;
+  }
+
   export default defineComponent({
     name: 'MyComponent',
     data() {
       return {
-
+        formData: {
+          Jurusan_ID: "",
+          nama_jurusan: "",
+          kprodi: "",
+          jenjang: "",
+          Akreditasi: "",
+        },
+        identitas: [] as Identitas[],
+        prodi: [] as Prodi[],
       };
     },
+    created() {
+      this.getCodeIdentitas();
+      this.getCodeProdi();
+    },
+    methods: {
+      async getCodeIdentitas() {
+        try {
+          const response = await axios.get("http://localhost:5000/identitas-code");
+          this.identitas = response.data;
+          console.log(this.identitas);
+        } catch (error) {
+          console.log(error)
+        }
+      },
+      async getCodeProdi() {
+        try {
+          const response = await axios.get("http://localhost:5000/prodi-code");
+          this.prodi = response.data;
+          console.log(this.prodi);
+        } catch (error) {
+          console.log(error);
+        }
+      }
+    }
   });
 </script>
 
