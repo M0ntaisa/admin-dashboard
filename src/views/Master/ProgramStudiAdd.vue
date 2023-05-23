@@ -1,62 +1,61 @@
-<script lang="ts">
-  import { defineComponent } from 'vue';
+<script setup lang="ts">
+import { ref, onMounted } from 'vue';
 
-  // import axios
-  import axios from 'axios';
+// import axios
+import axios from 'axios';
 
-  interface Identitas {
-    ID: number;
-    Identitas_ID: number;
-    Nama_Identitas: string;
-  };
+// interfaces
+interface Identitas {
+  ID: number;
+  Identitas_ID: number;
+  Nama_Identitas: string;
+};
 
-  interface Prodi {
-    ID: number;
-    Identitas_ID: number;
-    Jurusan_ID: number;
-    nama_jurusan: string;
+interface Prodis {
+  ID: number;
+  Identitas_ID: number;
+  Jurusan_ID: number;
+  nama_jurusan: string;
+};
+
+const formData = ref({
+  Jurusan_ID: "",
+  nama_jurusan: "",
+  kprodi: "",
+  jenjang: "",
+  Akreditasi: "",
+});
+
+// define the ref
+const identitas = ref<Identitas[]>([]);
+const prodis = ref<Prodis[]>([]);
+
+// define the function
+// get institusi
+const getCodeIdentitas = async () => {
+  try {
+    const response = await axios.get<Identitas[]>("http://localhost:5000/identitas-code");
+    identitas.value = response.data;
+    console.log(identitas.value);
+  } catch (error) {
+    console.log(error);
   }
+};
+// get program studi
+const getCodeProdi = async () => {
+  try {
+    const response = await axios.get<Prodis[]>("http://localhost:5000/prodi-code");
+    prodis.value = response.data;
+    console.log(prodis.value);
+  } catch (error) {
+    console.log(error);
+  }
+}
 
-  export default defineComponent({
-    name: 'MyComponent',
-    data() {
-      return {
-        formData: {
-          Jurusan_ID: "",
-          nama_jurusan: "",
-          kprodi: "",
-          jenjang: "",
-          Akreditasi: "",
-        },
-        identitas: [] as Identitas[],
-        prodi: [] as Prodi[],
-      };
-    },
-    created() {
-      this.getCodeIdentitas();
-      this.getCodeProdi();
-    },
-    methods: {
-      async getCodeIdentitas() {
-        try {
-          const response = await axios.get("http://localhost:5000/identitas-code");
-          this.identitas = response.data;
-          console.log(this.identitas);
-        } catch (error) {
-          console.log(error)
-        }
-      },
-      async getCodeProdi() {
-        try {
-          const response = await axios.get("http://localhost:5000/prodi-code");
-          this.prodi = response.data;
-          console.log(this.prodi);
-        } catch (error) {
-          console.log(error);
-        }
-      }
-    }
-  });
+onMounted(() => {
+  getCodeIdentitas();
+  getCodeProdi();
+});
 </script>
 
 <template>
@@ -79,6 +78,12 @@
                 class="mt-1 block w-full rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
               >
                 <option>- Pilih -</option>
+                <option 
+                  v-for="institusi in identitas" :key="institusi.ID"
+                  value="{{ institusi.ID }}"
+                >
+                  {{ institusi.Nama_Identitas }}
+                </option>
               </select>
             </div>
 
@@ -96,6 +101,12 @@
                 class="mt-1 block w-full rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
               >
                 <option>- Pilih -</option>
+                <option
+                  v-for="prodi in prodis" :key="prodi.ID" 
+                  value="{{ prodi.ID }}"
+                >
+                  {{ prodi.nama_jurusan }}
+                </option>
               </select>
             </div>
 
