@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
+import useVuelidate from '@vuelidate/core';
+import { required } from '@vuelidate/validators';
 
 // import axios
 import axios from 'axios';
@@ -11,24 +13,46 @@ interface Identitas {
   Nama_Identitas: string;
 };
 
-interface Prodis {
+interface Fakulties {
   ID: number;
-  Identitas_ID: number;
-  Jurusan_ID: number;
-  nama_jurusan: string;
+  kode_fakultas: string;
+  nama_fakultas: string;
 };
 
 const formData = ref({
+  Identitas_ID: "- Pilih -",
   Jurusan_ID: "",
   nama_jurusan: "",
+  nama_fakultas: "",
   kprodi: "",
   jenjang: "",
   Akreditasi: "",
 });
 
+const rules = {
+  Identitas_ID: { required },
+  Jurusan_ID: { required },
+  nama_jurusan: { required },
+  nama_fakultas: { required },
+  kprodi: { required },
+  jenjang: { required },
+  Akreditasi: { required },
+}
+
+const v$ = useVuelidate(rules, formData);
+
+const submitForm = async () => {
+  const result = await v$.value.$validate();
+  if (result) {
+    alert("success, form submitted!");
+  } else {
+    alert("error, form not submitted!");
+  }
+}
+
 // define the ref
 const identitas = ref<Identitas[]>([]);
-const prodis = ref<Prodis[]>([]);
+const fakultas = ref<Fakulties[]>([]);
 
 // define the function
 // get institusi
@@ -41,12 +65,12 @@ const getCodeIdentitas = async () => {
     console.log(error);
   }
 };
-// get program studi
-const getCodeProdi = async () => {
+// get fakultas
+const getCodeFakultas = async () => {
   try {
-    const response = await axios.get<Prodis[]>("http://localhost:5000/prodi-code");
-    prodis.value = response.data;
-    console.log(prodis.value);
+    const response = await axios.get<Fakulties[]>("http://localhost:5000/fakultas-code");
+    fakultas.value = response.data;
+    console.log(fakultas.value);
   } catch (error) {
     console.log(error);
   }
@@ -54,13 +78,16 @@ const getCodeProdi = async () => {
 
 onMounted(() => {
   getCodeIdentitas();
-  getCodeProdi();
+  getCodeFakultas();
 });
 </script>
 
 <template>
   <main class="bg-gray-100 p-4">
-    <form action="#" method="POST" class="mt-4">
+    <form 
+      @submit.prevent="submitForm"
+      class="mt-4"
+    >
       <div class="shadow rounded overflow-hidden">
         <div class="bg-white px-4 py-5 sm:p-6">
           <div class="grid grid-cols-6 gap-6">
@@ -76,15 +103,22 @@ onMounted(() => {
                 name="institusi"
                 autoComplete="institusi-name"
                 class="mt-1 block w-full rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                v-model="formData.Identitas_ID"
               >
-                <option>- Pilih -</option>
+                <!-- <option value="0">- Pilih -</option> -->
                 <option 
                   v-for="institusi in identitas" :key="institusi.ID"
-                  value="{{ institusi.ID }}"
+                  value="{{ institusi.Identitas_ID }}"
                 >
                   {{ institusi.Nama_Identitas }}
                 </option>
               </select>
+              <span
+                v-if="formData.Identitas_ID === '0'"
+                class="text-red-500 italic"
+              >
+                Please select an option
+              </span>
             </div>
 
             <div class="col-span-6 sm:col-span-3">
@@ -102,10 +136,10 @@ onMounted(() => {
               >
                 <option>- Pilih -</option>
                 <option
-                  v-for="prodi in prodis" :key="prodi.ID" 
-                  value="{{ prodi.ID }}"
+                  v-for="fak in fakultas" :key="fak.ID" 
+                  value="{{ fak.Jurusan_ID }}"
                 >
-                  {{ prodi.nama_jurusan }}
+                  {{ fak.nama_fakultas }}
                 </option>
               </select>
             </div>
@@ -123,7 +157,14 @@ onMounted(() => {
                 id="kodeProdi"
                 autoComplete="kodeProdi"
                 class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                v-model="formData.Jurusan_ID"
               />
+              <span
+                v-for="error in v$.Jurusan_ID.$errors" :key="error.$uid"
+                class="text-red-500 italic"
+              >
+                {{ error.$message }}
+              </span>
             </div>
 
             <div class="col-span-12 sm:col-span-6">
@@ -139,7 +180,14 @@ onMounted(() => {
                 id="namaProdi"
                 autoComplete="namaProdi"
                 class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                v-model="formData.nama_jurusan"
               />
+              <span
+                v-for="error in v$.nama_jurusan.$errors" :key="error.$uid"
+                class="text-red-500 italic"
+              >
+                {{ error.$message }}
+              </span>
             </div>
 
             <div class="col-span-12 sm:col-span-6">
@@ -155,7 +203,14 @@ onMounted(() => {
                 id="ketuaProdi"
                 autoComplete="ketuaProdi"
                 class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                v-model="formData.kprodi"
               />
+              <span
+                v-for="error in v$.kprodi.$errors" :key="error.$uid"
+                class="text-red-500 italic"
+              >
+                {{ error.$message }}
+              </span>
             </div>
 
             <div class="col-span-6 sm:col-span-3">
@@ -171,7 +226,14 @@ onMounted(() => {
                 id="jenjang"
                 autoComplete="jenjang"
                 class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                v-model="formData.jenjang"
               />
+              <span
+                v-for="error in v$.jenjang.$errors" :key="error.$uid"
+                class="text-red-500 italic"
+              >
+                {{ error.$message }}
+              </span>
             </div>
 
             <div class="col-span-6 sm:col-span-3">
@@ -187,7 +249,14 @@ onMounted(() => {
                 id="akreditasi"
                 autoComplete="akreditasi"
                 class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                v-model="formData.Akreditasi"
               />
+              <span
+                v-for="error in v$.Akreditasi.$errors" :key="error.$uid"
+                class="text-red-500 italic"
+              >
+                {{ error.$message }}
+              </span>
             </div>
           </div>
         </div>
