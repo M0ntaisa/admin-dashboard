@@ -20,7 +20,7 @@ interface Fakulties {
 };
 
 const formData = ref({
-  Identitas_ID: "- Pilih -",
+  Identitas_ID: "",
   Jurusan_ID: "",
   nama_jurusan: "",
   nama_fakultas: "",
@@ -103,9 +103,8 @@ onMounted(() => {
                 name="institusi"
                 autoComplete="institusi-name"
                 class="mt-1 block w-full rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
-                v-model="formData.Identitas_ID"
               >
-                <!-- <option value="0">- Pilih -</option> -->
+                <option>- Pilih -</option>
                 <option 
                   v-for="institusi in identitas" :key="institusi.ID"
                   value="{{ institusi.Identitas_ID }}"
@@ -114,7 +113,6 @@ onMounted(() => {
                 </option>
               </select>
               <span
-                v-if="formData.Identitas_ID === '0'"
                 class="text-red-500 italic"
               >
                 Please select an option
