@@ -2,6 +2,7 @@
 import { ref, onMounted, computed } from 'vue';
 import useVuelidate from '@vuelidate/core';
 import { required, numeric } from '@vuelidate/validators';
+import router from '@/router';
 
 // import axios
 import axios from 'axios';
@@ -45,7 +46,20 @@ const submitForm = async () => {
   const result = await v$.value.$validate();
   if (result) {
     console.log(formData.value);
-    alert("success, form submitted!");
+    // Make the POST request using Axios
+    axios
+      .post('http://localhost:5000/prodi', formData.value)
+      .then(response => {
+        // Handle the response if needed
+        alert("success, form submitted!");
+        console.log(response.data);
+        // redirect
+        router.push('/master/prodi');
+      })
+      .catch(error => {
+        // Handle the error if needed
+        console.error(error);
+      });
   } else {
     alert("error, form not submitted!");
   }
