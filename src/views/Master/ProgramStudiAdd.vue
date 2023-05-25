@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, computed } from 'vue';
 import useVuelidate from '@vuelidate/core';
-import { required } from '@vuelidate/validators';
+import { required, numeric } from '@vuelidate/validators';
 
 // import axios
 import axios from 'axios';
@@ -31,7 +31,7 @@ const formData = ref({
 
 const rules = {
   Identitas_ID: { required },
-  Jurusan_ID: { required },
+  Jurusan_ID: { required, numeric },
   nama_jurusan: { required },
   nama_fakultas: { required },
   kprodi: { required },
@@ -44,6 +44,7 @@ const v$ = useVuelidate(rules, formData);
 const submitForm = async () => {
   const result = await v$.value.$validate();
   if (result) {
+    console.log(formData.value);
     alert("success, form submitted!");
   } else {
     alert("error, form not submitted!");
@@ -103,11 +104,12 @@ onMounted(() => {
                 name="institusi"
                 autoComplete="institusi-name"
                 class="mt-1 block w-full rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                v-model="formData.Identitas_ID"
               >
-                <option>- Pilih -</option>
+                <option value="">- Pilih -</option>
                 <option 
                   v-for="institusi in identitas" :key="institusi.ID"
-                  value="{{ institusi.Identitas_ID }}"
+                  :value="institusi.Identitas_ID"
                 >
                   {{ institusi.Nama_Identitas }}
                 </option>
@@ -115,7 +117,7 @@ onMounted(() => {
               <span
                 class="text-red-500 italic"
               >
-                Please select an option
+                
               </span>
             </div>
 
@@ -131,11 +133,12 @@ onMounted(() => {
                 name="fakultas"
                 autoComplete="fakultas-name"
                 class="mt-1 block w-full rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                v-model="formData.nama_fakultas"
               >
-                <option>- Pilih -</option>
+                <option value="">- Pilih -</option>
                 <option
                   v-for="fak in fakultas" :key="fak.ID" 
-                  value="{{ fak.Jurusan_ID }}"
+                  :value="fak.ID"
                 >
                   {{ fak.nama_fakultas }}
                 </option>
