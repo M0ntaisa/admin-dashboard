@@ -51,7 +51,7 @@ const submitForm = async () => {
       .post('http://localhost:5000/prodi', formData.value)
       .then(response => {
         // Handle the response if needed
-        alert("success, form submitted!");
+        alert("sukses, data tersimpan!");
         console.log(response.data);
         // redirect
         router.push('/master/prodi');
@@ -61,7 +61,7 @@ const submitForm = async () => {
         console.error(error);
       });
   } else {
-    alert("error, form not submitted!");
+    alert("galat, data tidak tersimpan!");
   }
 }
 
@@ -91,9 +91,9 @@ const getCodeFakultas = async () => {
   }
 }
 
-onMounted(() => {
-  getCodeIdentitas();
-  getCodeFakultas();
+onMounted(async () => {
+  await getCodeIdentitas();
+  await getCodeFakultas();
 });
 </script>
 
