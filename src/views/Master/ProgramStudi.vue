@@ -1,7 +1,6 @@
-<script lang="ts">
+.<script setup lang="ts">
+import { ref, onMounted } from 'vue';
 import { PencilIcon, TrashIcon } from "@heroicons/vue/24/outline";
-
-// import axios
 import axios from 'axios';
 
 interface Jurusan {
@@ -15,35 +14,52 @@ interface Jurusan {
   Akreditasi: string;
 };
 
-export default {
-  data() {
-    return {
-      items: [] as Jurusan[],
-    };
-  },
-  created() {
-    this.getProdi();
-  },
-  methods: {
-    // get all Prodi
-    async getProdi() {
-      try {
-        const response = await axios.get("http://localhost:5000/prodi");
-        this.items = response.data;
-        console.log(this.items);
-      } catch (error) {
-        console.log(error);
-      }
-    },
-  },
-  components: {
-    PencilIcon,
-    TrashIcon,
-  },
+// Create a reactive ref for items array
+const items = ref<Jurusan[]>([]);
+
+// Fetch the items when the component mounts
+onMounted(async () => {
+  await getProdi();
+});
+
+// get all Prodi
+async function getProdi() {
+  try {
+    const response = await axios.get("http://localhost:5000/prodi");
+    items.value = response.data;
+    console.log(items.value);
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+// Handle item deletion
+async function handleDelete(id: number) {
+  const confirmed = window.confirm('Are you sure you want to delete this item?');
+  if (confirmed) {
+    try {
+      await axios.delete(`http://localhost:5000/prodi/${id}`);
+
+      alert(`Item ${id} deleted successfully!`);
+
+      // You may want to fetch the data again after successful deletion to update the list
+      await getProdi();
+    } catch (error) {
+      // Handle any errors that occurred during deletion
+      console.error('Error deleting item:', error);
+      // Show an error message or handle the error in any way you prefer
+      alert('Error deleting item. Please try again later.');
+    }
+  }
+}
+
+// Import components for the template
+const components = {
+  PencilIcon,
+  TrashIcon,
 };
-
-
 </script>
+
 
 <template>
   <main class="bg-gray-100 p-4">
@@ -84,9 +100,9 @@ export default {
                 <router-link :to="{name: 'Prodi Update', params:{ id: item.ID }}" class="button bg-amber-400 rounded text-black px-2 py-1 text-sm">
                   <PencilIcon class="w-4 h-4 cursor-pointer" />
                 </router-link>
-                <TrashIcon class="w-4 h-4 cursor-pointer" />
-                <!-- <router-link :to="{name: 'Prodi Delete', params:{ id: item.ID }}" class="button bg-red-600 rounded text-black px-2 py-1 text-sm">
-                </router-link> -->
+                <button class="button bg-red-600 rounded text-white px-2 py-1 text-sm" @click="handleDelete(item.ID)">
+                  <TrashIcon class="w-4 h-4 cursor-pointer" />
+                </button>
               </td>
             </tr>
           </tbody>
