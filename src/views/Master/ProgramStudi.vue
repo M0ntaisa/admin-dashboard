@@ -27,7 +27,6 @@ async function getProdi() {
   try {
     const response = await axios.get("http://localhost:5000/prodi");
     items.value = response.data;
-    console.log(items.value);
   } catch (error) {
     console.log(error);
   }
