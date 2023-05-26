@@ -23,9 +23,8 @@ declare module "@vue/runtime-core" {
 
 app.mount("#app");
 
-Vue.config.errorHandler = (err, vm, info) => {
+app.config.errorHandler = (err, vm, info) => {
   console.error('Unhandled Vue error:', err);
   console.error('Vue component:', vm);
   console.error('Error info:', info);
 };
-
