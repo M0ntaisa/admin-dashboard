@@ -1,37 +1,59 @@
-<script>
+<script setup lang="ts">
+import { ref, onMounted } from 'vue';
 import { PencilIcon, TrashIcon } from "@heroicons/vue/24/outline";
-
-// import axios
 import axios from 'axios';
 
-export default {
-  data() {
-    return {
-      items: [],
-    };
-  },
-  created() {
-    this.getProgram();
-  },
-  methods: {
-    // get all Program
-    async getProgram() {
-      try {
-        const response = await axios.get("http://localhost:5000/program");
-        this.items = response.data;
-        console.log(this.items);
-      } catch (error) {
-        console.log(error);
-      }
-    },
-  },
-  components: {
-    PencilIcon,
-    TrashIcon,
-  },
-};
+interface Program {
+  ID: number;
+  Identitas_ID: number;
+  Program_ID: string;
+  nama_program: string;
+}
 
+// reactive ref for items array
+const items = ref<Program[]>([]);
 
+// fetch the items when the component mounts
+onMounted( async () => {
+  await getProgram();
+})
+
+// get all program
+const getProgram = async () => {
+  try {
+    const response = await axios.get(`http://localhost:5000/program`);
+    items.value = response.data;
+    console.log(items.value);
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+// handle item deletion
+const handleDelete = async (id: number) => {
+  const confirmed = window.confirm('Apakah anda yakin ingin menghapus item ini?');
+  if (confirmed) {
+    try {
+      await axios.delete(`http://localhost:5000/prodi/${id}`);
+
+      alert(`Item telah dihapus!`);
+
+      // You may want to fetch the data again after successful deletion to update the list
+      await getProgram();
+    } catch (error) {
+      // Handle any errors that occurred during deletion
+      console.error('Error deleting item:', error);
+      // Show an error message or handle the error in any way you prefer
+      alert('Galat saat menghapus, coba lagi nanti.');
+    }
+  }
+}
+
+// import components for template
+const components = {
+  PencilIcon,
+  TrashIcon,
+}
 </script>
 
 <template>
@@ -65,7 +87,9 @@ export default {
                 <router-link :to="{name: 'Program Update', params:{ id: item.ID }}" class="button bg-amber-400 rounded text-black px-2 py-1 text-sm">
                   <PencilIcon class="w-4 h-4 cursor-pointer" />
                 </router-link>
-                <TrashIcon class="w-4 h-4 cursor-pointer" />
+                <button class="button bg-red-600 rounded text-white px-2 py-1 text-sm" @click="handleDelete(item.ID)">
+                  <TrashIcon class="w-4 h-4 cursor-pointer" />
+                </button>
               </td>
             </tr>
           </tbody>
