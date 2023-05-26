@@ -102,10 +102,10 @@ const getCodeFakultas = async () => {
   }
 }
 
-onMounted(() => {
-  getCodeIdentitas();
-  getCodeFakultas();
-  getProdiById();
+onMounted( async () => {
+  await getCodeIdentitas();
+  await getCodeFakultas();
+  await getProdiById();
 });
 </script>
 
