@@ -34,12 +34,12 @@ async function getProdi() {
 
 // Handle item deletion
 async function handleDelete(id: number) {
-  const confirmed = window.confirm('Are you sure you want to delete this item?');
+  const confirmed = window.confirm('Apakah anda yakin ingin menghapus item ini?');
   if (confirmed) {
     try {
       await axios.delete(`http://localhost:5000/prodi/${id}`);
 
-      alert(`Item ${id} deleted successfully!`);
+      alert(`Item telah dihapus!`);
 
       // You may want to fetch the data again after successful deletion to update the list
       await getProdi();
@@ -47,7 +47,7 @@ async function handleDelete(id: number) {
       // Handle any errors that occurred during deletion
       console.error('Error deleting item:', error);
       // Show an error message or handle the error in any way you prefer
-      alert('Error deleting item. Please try again later.');
+      alert('Galat saat menghapus, coba lagi nanti.');
     }
   }
 }
