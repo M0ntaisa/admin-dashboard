@@ -45,14 +45,14 @@ const v$ = useVuelidate(rules, formData);
 const submitForm = async () => {
   const result = await v$.value.$validate();
   if (result) {
-    console.log(formData.value);
+    // console.log(formData.value);
     // Make the POST request using Axios
     axios
       .post('http://localhost:5000/prodi', formData.value)
       .then(response => {
         // Handle the response if needed
         alert("sukses, data tersimpan!");
-        console.log(response.data);
+        // console.log(response.data);
         // redirect
         router.push('/master/prodi');
       })
@@ -75,7 +75,7 @@ const getCodeIdentitas = async () => {
   try {
     const response = await axios.get<Identitas[]>("http://localhost:5000/identitas-code");
     identitas.value = response.data;
-    console.log(identitas.value);
+    // console.log(identitas.value);
   } catch (error) {
     console.log(error);
   }
@@ -85,7 +85,7 @@ const getCodeFakultas = async () => {
   try {
     const response = await axios.get<Fakulties[]>("http://localhost:5000/fakultas-code");
     fakultas.value = response.data;
-    console.log(fakultas.value);
+    // console.log(fakultas.value);
   } catch (error) {
     console.log(error);
   }
