@@ -9,6 +9,7 @@ import ProgramStudiAdd from "@/views/Master/ProgramStudiAdd.vue";
 import ProgramStudiUpdate from "@/views/Master/ProgramStudiUpdate.vue";
 import Program from "@/views/Master/Program.vue";
 import ProgramAdd from "@/views/Master/ProgramAdd.vue";
+import ProgramUpdate from "@/views/Master/ProgramUpdate.vue";
 import Administrator from "@/views/Admin/Administrator.vue";
 import AdminAdd from "@/views/Admin/AdminAdd.vue";
 import AdminUpdate from "@/views/Admin/AdminUpdate.vue";
@@ -72,6 +73,11 @@ const router = createRouter({
           path: "master/program-add",
           name: "Program Add",
           component: ProgramAdd,
+        },
+        {
+          path: "master/program-update/:id",
+          name: "Program Update",
+          component: ProgramUpdate,
         },
         {
           path: "admin/administrator",
