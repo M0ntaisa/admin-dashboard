@@ -1,14 +1,83 @@
 <script setup lang="ts">
+import { ref, onMounted } from 'vue';
+import useVuelidate from '@vuelidate/core';
+import { required } from '@vuelidate/validators';
+import router from '@/router';
+import axios from 'axios';
+
+// interfaces
+interface Identitas {
+  ID: number;
+  Identitas_ID: number;
+  Nama_Identitas: string;
+};
+
+// define the ref
+const formData = ref({
+  Identitas_ID: '',
+  Program_ID: '',
+  nama_program: '',
+})
+
+const rules = {
+  Program_ID: { required },
+  nama_program: { required },
+}
+
+const v$ = useVuelidate(rules, formData);
+
+// define the function
+// get institusi
+const getCodeIdentitas = async () => {
+  try {
+    const response = await axios.get<Identitas[]>("http://localhost:5000/identitas-code");
+    formData.value.Identitas_ID = response.data[0].Identitas_ID.toString();
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+// submit form
+const submitForm = async () => {
+  const result = await v$.value.$validate();
+  if (result) {
+    // console.log(formData.value);
+    // Make the POST request using Axios
+    axios
+      .post('http://localhost:5000/program', formData.value)
+      .then(response => {
+        // Handle the response if needed
+        alert("Sukses! data tersimpan.");
+        // console.log(response.data);
+        // redirect
+        router.push('/master/program');
+      })
+      .catch(error => {
+        // Handle the error if needed
+        console.error(error);
+      });
+  } else {
+    alert("Galat! data tidak tersimpan.");
+  }
+}
+
+onMounted( async () => {
+  await getCodeIdentitas();
+});
+
 </script>
 
 <template>
   <main class="bg-gray-100 p-4">
-    <form action="#" method="POST" class="mt-4">
+    <form 
+      @submit.prevent="submitForm"
+      class="mt-4"
+    >
       <div class="shadow rounded overflow-hidden">
         <div class="bg-white px-4 py-5 sm:p-6">
           <div class="grid grid-cols-6 gap-6">
             <div class="col-span-6 sm:col-span-3">
-              <input type="text" hidden>
+              <input name="Identitas_ID" type="text" v-model="formData.Identitas_ID" hidden/>
               <label
                 htmlFor="Program_ID"
                 class="block text-sm font-medium text-gray-700"
@@ -21,7 +90,14 @@
                 id="Program_ID"
                 autoComplete="Program_ID"
                 class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                v-model="formData.Program_ID"
               />
+              <span
+                v-for="error in v$.Program_ID.$errors" :key="error.$uid"
+                class="text-red-500 italic"
+              >
+                {{ error.$message }}
+              </span>
             </div>
 
             <div class="col-span-6 sm:col-span-3">
@@ -37,7 +113,14 @@
                 id="nama_program"
                 autoComplete="nama_program"
                 class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                v-model="formData.nama_program"
               />
+              <span
+                v-for="error in v$.nama_program.$errors" :key="error.$uid"
+                class="text-red-500 italic"
+              >
+                {{ error.$message }}
+              </span>
             </div>
 
           </div>
