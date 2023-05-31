@@ -51,7 +51,7 @@ const submitForm = async () => {
       .post('http://localhost:5000/prodi', formData.value)
       .then(response => {
         // Handle the response if needed
-        alert("sukses, data tersimpan!");
+        alert("Sukses! data tersimpan.");
         // console.log(response.data);
         // redirect
         router.push('/master/prodi');
@@ -61,7 +61,7 @@ const submitForm = async () => {
         console.error(error);
       });
   } else {
-    alert("galat, data tidak tersimpan!");
+    alert("Galat! data tidak tersimpan.");
   }
 }
 
