@@ -53,7 +53,7 @@ const submitForm = async () => {
       .put(`http://localhost:5000/prodi/${id}`, formData.value)
       .then(response => {
         // Handle the response if needed
-        alert("success, form submitted!");
+        alert("Sukses! data tersimpan.");
         // console.log(response.data);
         // redirect
         router.push('/master/prodi');
@@ -63,7 +63,7 @@ const submitForm = async () => {
         console.error(error);
       });
   } else {
-    alert("error, form not submitted!");
+    alert("Galat! data tidak tersimpan.");
   }
 }
 
