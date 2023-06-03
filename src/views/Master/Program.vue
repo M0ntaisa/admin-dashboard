@@ -23,7 +23,6 @@ const getProgram = async () => {
   try {
     const response = await axios.get(`http://localhost:5000/program`);
     items.value = response.data;
-    console.log(items.value);
   } catch (error) {
     console.log(error);
   }
@@ -34,7 +33,7 @@ const handleDelete = async (id: number) => {
   const confirmed = window.confirm('Apakah anda yakin ingin menghapus item ini?');
   if (confirmed) {
     try {
-      await axios.delete(`http://localhost:5000/prodi/${id}`);
+      await axios.delete(`http://localhost:5000/program/${id}`);
 
       alert(`Item telah dihapus!`);
 
