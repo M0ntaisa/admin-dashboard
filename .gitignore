@@ -34,6 +34,9 @@ src/views/Admin/*
 !src/views/Master/Program.vue
 !src/views/Master/ProgramAdd.vue
 !src/views/Master/ProgramUpdate.vue
+!src/views/Master/Fakultas.vue
+!src/views/Master/FakultasAdd.vue
+!src/views/Master/FakultasUpdate.vue
 !src/views/Admin/Administrator.vue
 !src/views/Admin/AdminAdd.vue
 !src/views/Admin/AdminUpdate.vue
