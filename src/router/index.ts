@@ -88,7 +88,7 @@ const router = createRouter({
           component: Fakultas,
         },
         {
-          path: "master/fakultas-add/:id",
+          path: "master/fakultas-add",
           name: "Fakultas Add",
           component: FakultasAdd,
         },
