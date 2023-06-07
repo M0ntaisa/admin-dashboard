@@ -13,6 +13,9 @@ import ProgramUpdate from "@/views/Master/ProgramUpdate.vue";
 import Fakultas from "@/views/Master/Fakultas.vue";
 import FakultasAdd from "@/views/Master/FakultasAdd.vue";
 import FakultasUpdate from "@/views/Master/FakultasUpdate.vue";
+import Kampus from "@/views/Master/Kampus.vue";
+import KampusAdd from "@/views/Master/KampusAdd.vue";
+import KampusUpdate from "@/views/Master/KampusUpdate.vue"
 import Administrator from "@/views/Admin/Administrator.vue";
 import AdminAdd from "@/views/Admin/AdminAdd.vue";
 import AdminUpdate from "@/views/Admin/AdminUpdate.vue";
@@ -96,6 +99,21 @@ const router = createRouter({
           path: "master/fakultas-update/:id",
           name: "Fakultas Update",
           component: FakultasUpdate,
+        },
+        {
+          path: "master/kampus",
+          name: "Kampus",
+          component: Kampus,
+        },
+        {
+          path: "master/kampus-add",
+          name: "Kampus Add",
+          component: KampusAdd,
+        },
+        {
+          path: "master/kampus-update/:id",
+          name: "Kampus Update",
+          component: KampusUpdate,
         },
         {
           path: "admin/administrator",
