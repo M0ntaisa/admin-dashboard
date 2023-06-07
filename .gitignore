@@ -37,6 +37,9 @@ src/views/Admin/*
 !src/views/Master/Fakultas.vue
 !src/views/Master/FakultasAdd.vue
 !src/views/Master/FakultasUpdate.vue
+!src/views/Master/Kampus.vue
+!src/views/Master/KampusAdd.vue
+!src/views/Master/KampusUpdate.vue
 !src/views/Admin/Administrator.vue
 !src/views/Admin/AdminAdd.vue
 !src/views/Admin/AdminUpdate.vue
