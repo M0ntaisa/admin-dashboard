@@ -10,6 +10,9 @@ import ProgramStudiUpdate from "@/views/Master/ProgramStudiUpdate.vue";
 import Program from "@/views/Master/Program.vue";
 import ProgramAdd from "@/views/Master/ProgramAdd.vue";
 import ProgramUpdate from "@/views/Master/ProgramUpdate.vue";
+import Fakultas from "@/views/Master/Fakultas.vue";
+import FakultasAdd from "@/views/Master/FakultasAdd.vue";
+import FakultasUpdate from "@/views/Master/FakultasUpdate.vue";
 import Administrator from "@/views/Admin/Administrator.vue";
 import AdminAdd from "@/views/Admin/AdminAdd.vue";
 import AdminUpdate from "@/views/Admin/AdminUpdate.vue";
@@ -78,6 +81,21 @@ const router = createRouter({
           path: "master/program-update/:id",
           name: "Program Update",
           component: ProgramUpdate,
+        },
+        {
+          path: "master/fakultas",
+          name: "Fakultas",
+          component: Fakultas,
+        },
+        {
+          path: "master/fakultas-add/:id",
+          name: "Fakultas Add",
+          component: FakultasAdd,
+        },
+        {
+          path: "master/fakultas-update/:id",
+          name: "Fakultas Update",
+          component: FakultasUpdate,
         },
         {
           path: "admin/administrator",
